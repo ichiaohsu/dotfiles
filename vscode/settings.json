@@ -1,0 +1,14 @@
+{
+    "terminal.integrated.fontFamily":"Fira Mono for Powerline",
+    "terminal.integrated.fontSize": 14,
+    "editor.fontSize": 14,
+    "workbench.startupEditor": "newUntitledFile",
+    "python.pythonPath": "python2",
+    //"vim.disableAnnoyingNeovimMessage": true,
+    "workbench.colorCustomizations":{
+        "terminal.ansiYellow":"#c9bc08"
+    },
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true,
+    "editor.detectIndentation": true,
+}
