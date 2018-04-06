@@ -1,0 +1,5 @@
+[user]
+	email = ichiao.hsu@gmail.com
+	name = I-Chiao Hsu
+[alias]
+	lg = log --graph --decorate --oneline
