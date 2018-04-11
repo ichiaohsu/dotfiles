@@ -1,0 +1,8 @@
+// Place your key bindings in this file to overwrite the defaults
+[
+    {
+        "key": "cmd+down",
+        "command": "workbench.action.terminal.focus",
+        "when": "editorFocus"
+    }
+]
