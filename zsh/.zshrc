@@ -1,6 +1,24 @@
-PATH="/Users/ich/anaconda3/bin:$PATH"
+#This include AVR binary used for GH60
+PATH="$GOPATH/bin:$PATH:/Users/ich/anaconda3/bin:/usr/local/bin/protoc-3.6.0-osx-x86_64/bin:/usr/local/CrossPack-AVR/bin"
 
 export GOPATH=/Users/ich/Projects/github-work/go
+
+# This Kubernetes constant is used for switch context conveniently
+KUBE_DEV=""
+KUBE_PROD=""
+KUBE_PROD2B=""
+KUBE_READR=""
+
+# kubectl has problem with default vi
+# Set to use vim
+export KUBE_EDITOR="vim"
+
+# Slack webook url
+SLACK="https://hooks.slack.com/services/"
+
+# Drone server url and token.
+export DRONE_SERVER=http://127.0.0.1
+export DRONE_TOKEN=abc123
 
 DEFAULT_USER=ich
 POWERLINE_HIDE_HOST_NAME=true
