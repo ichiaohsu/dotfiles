@@ -277,3 +277,10 @@ au FileType sql set tabstop=2
 
 " Disable the issue of SQLComplete: The debxt plugin must be loaded for dynamic SQL completion
 let g:omni_sql_no_default_maps = 1
+
+"----------------------------------------------
+" Language: Terraform
+"----------------------------------------------
+let g:terraform_fmt_on_save=1
+let g:terraform_align=1
+let g:terraform_fold_sections=1
