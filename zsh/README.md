@@ -24,14 +24,25 @@ Use `n` to manage version of Node.js.
 
 1. Make a folder to put `n`, and subsequent node executives:
 ```bash
-mkdir ~/.n
+mkdir -p ~/.local
 ```
-2. Set `N_PREFIX` to make n install to custom path
+
+Here `~/.local` is the compatible path as the way we setup `pyenv`
+
+2. Install `n`
+We're going to put `n` in our customize path `~/.local/bin`, just as `pyenv`. 
+
+Clone the repo `tj/n`, `cd` to the folder, and type follow:
+```bash
+PREFIX=~/.local/bin make install
+```
+
+3. Set `N_PREFIX` to make n install to custom path
 
 In this way we don't have to modify ownership of `/usr/local/bin`, or use `sudo` permission.
 
 ```bash
-export N_PREFIX=~/.n
+export N_PREFIX=~/.local
 ```
 
 ### Kubernetes

@@ -5,7 +5,7 @@ DEFAULT_USER="ich"
 export LANG=en_US.UTF-8
 
 #AVR
-PATH="$GOPATH/bin:$PATH:/Users/ich/.local/bin:$HOME/.pyenv/bin:/Users/ich/anaconda3/bin:/usr/local/bin/protoc-3.6.0-osx-x86_64/bin:/usr/local/CrossPack-AVR/bin"
+PATH="$GOPATH/bin:/Users/ich/.local/bin:$PATH:$HOME/.pyenv/bin:/Users/ich/anaconda3/bin:/usr/local/bin/protoc-3.6.0-osx-x86_64/bin:/usr/local/CrossPack-AVR/bin"
 
 # ----------------------------------------- Python -----------------------------------------
 eval "$(pyenv init -)"
@@ -16,7 +16,7 @@ export GO111MODULE=on
 
 # ----------------------------------------- Node.js -----------------------------------------
 # Node.js versions management with n
-export N_PREFIX=~/.n
+export N_PREFIX=~/.local
 
 # ----------------------------------------- Java -----------------------------------------
 export JAVA_HOME=/Library/Internet\ Plug-Ins/JavaAppletPlugin.plugin/Contents/Home
