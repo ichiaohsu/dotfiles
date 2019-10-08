@@ -3,12 +3,6 @@ PATH="$GOPATH/bin:$PATH:/Users/ich/anaconda3/bin:/usr/local/bin/protoc-3.6.0-osx
 
 export GOPATH=/Users/ich/Projects/github-work/go
 
-# This Kubernetes constant is used for switch context conveniently
-KUBE_DEV=""
-KUBE_PROD=""
-KUBE_PROD2B=""
-KUBE_READR=""
-
 # kubectl has problem with default vi
 # Set to use vim
 export KUBE_EDITOR="vim"
