@@ -1,4 +1,45 @@
 # Complete the terminal
+## Setup zsh
+### install zsh
+```bash
+brew install zsh
+```
+Set `zsh` to default terminal:
+```bash
+sudo sh -c "echo $(which zsh) >> /etc/shells" 
+chsh -s $(which zsh)
+```
+
+### install oh-my-zsh
+```bash
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+```
+
+### Install powerline fonts
+Powerline fonts are used for special symbols used in themes. We could install with `brew`
+
+`Sauce Code Pro Nerd Font Complete` is recommended.
+```bash
+brew tap homebrew/cask-fonts
+
+brew cask install font-sourcecodepro-nerd-font
+```
+
+Set the Fonts in **Preferences** > **Profiles** > **Text** > **Fonts**, and your zsh could show special character now.
+
+### Setup theme
+
+### Install powerlevel9k
+```bash
+brew tap sambadevi/powerlevel9k
+
+brew install powerlevel9k
+```
+
+Set below line in `.zshrc`:
+```vim
+source /usr/local/opt/powerlevel9k/powerlevel9k.zsh-theme
+```
 
 ## Install Applications
 From now on, we are installing CLI to manipulate third-party resources.
