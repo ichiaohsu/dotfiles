@@ -1,31 +1,21 @@
-# ----------------------------------------- User settings -----------------------------------------
+# ------------------------------------- User settings -------------------------------------
 DEFAULT_USER="ich"
-
-# ----------------------------------------- Language settings -----------------------------------------
-export LANG=en_US.UTF-8
-
-#AVR
-PATH="$GOPATH/bin:/Users/ich/.local/bin:$PATH:$HOME/.pyenv/bin:/Users/ich/anaconda3/bin:/usr/local/bin/protoc-3.6.0-osx-x86_64/bin:/usr/local/CrossPack-AVR/bin"
-
-# ----------------------------------------- Python -----------------------------------------
-eval "$(pyenv init -)"
-
-# ----------------------------------------- Golang -----------------------------------------
-export GOPATH=/Users/ich/Projects/github-work/go
-export GO111MODULE=on
-
-# ----------------------------------------- Node.js -----------------------------------------
+# ------------------------------------- Environment settings -------------------------------------
+export LC_ALL=en_US.UTF-8
+PATH="$PATH:/Users/ich/.local/bin"
+# ------------------------------------- Node.js -------------------------------------
 # Node.js versions management with n
 export N_PREFIX=~/.local
-
-# ----------------------------------------- Java -----------------------------------------
+# ------------------------------------- Golang -------------------------------------
+export GO111MODULE=on
+# ------------------------------------- Python -------------------------------------
+eval "$(pyenv init -)"
+# ------------------------------------- Java -------------------------------------
 export JAVA_HOME=/Library/Internet\ Plug-Ins/JavaAppletPlugin.plugin/Contents/Home
-
-# ----------------------------------------- Kubernetes -----------------------------------------
+# ------------------------------------- Kubernetes -------------------------------------
 # Force kubernetes to use vim for update yaml
 export KUBE_EDITOR="vim"
-
-# ----------------------------------------- Terraform -----------------------------------------
+# ------------------------------------- Terraform -------------------------------------
 GCP_ORGS=12345
 #TF_VAR_billing_account=YOUR_BILLING_ACCOUNT_ID
 TF_ADMIN=abc123
@@ -40,7 +30,7 @@ SLACK="https://hooks.slack.com/services/"
 export DRONE_SERVER=http://127.0.0.1
 export DRONE_TOKEN=abc123
 
-# ----------------------------------------- ZSH settings -----------------------------------------
+# ------------------------------------- ZSH settings -------------------------------------
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
