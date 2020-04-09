@@ -3,3 +3,5 @@
 	name = I-Chiao Hsu
 [alias]
 	lg = log --graph --decorate --oneline
+[i18n]
+	logOutputEncoding = utf-8
