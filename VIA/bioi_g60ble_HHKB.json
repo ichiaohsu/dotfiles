@@ -1,5 +1,5 @@
 {
-  "name": "BIOI G60 BLE",
+  "name": "BIOI G60",
   "vendorProductId": 1703043200,
   "macros": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
   "layers": [
@@ -120,9 +120,9 @@
       "KC_TRNS",
       "KC_LSFT",
       "KC_TRNS",
-      "KC_TRNS",
-      "KC_TRNS",
-      "KC_TRNS",
+      "KC_MPRV",
+      "KC_MPLY",
+      "KC_MNXT",
       "KC_TRNS",
       "KC_TRNS",
       "KC_PPLS",
