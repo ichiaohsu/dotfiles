@@ -1,12 +1,32 @@
-# ------------------------------------- User settings -------------------------------------
+# ------------------------------------- User settings -------------------------------
 DEFAULT_USER="ich"
-# ------------------------------------- Environment settings -------------------------------------
+# ------------------------------------- Environment settings ------------------------
 export LC_ALL=en_US.UTF-8
 PATH="$PATH:/Users/ich/.local/bin"
+# ------------------------------------- Git related ---------------------------------
+
+# pull main then checkout back 
+gpm () {
+    local current_branch
+    current_branch=$(git rev-parse --abbrev-ref HEAD)
+    echo "Current branch: $current_branch"
+
+    git checkout main
+    git pull
+    git checkout "$current_branch"
+}
+
+# checkout main then clean tracking branches for remote
+grp () {
+    git checkout main 
+    git remote prune origin
+    git branch -vv | grep -E "gone]" | awk '{print $1}' | xargs git branch -D
+}
+
 # ------------------------------------- Node.js -------------------------------------
 # Node.js versions management with n
 export N_PREFIX=~/.local
-# ------------------------------------- Golang -------------------------------------
+# ------------------------------------- Golang --------------------------------------
 export GO111MODULE=on
 # ------------------------------------- Python -------------------------------------
 eval "$(pyenv init -)"
