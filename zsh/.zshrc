@@ -10,15 +10,17 @@ gpm () {
     local current_branch
     current_branch=$(git rev-parse --abbrev-ref HEAD)
     echo "Current branch: $current_branch"
-
-    git checkout main
+    
+    # dynamically find default branch
+    git checkout "$(git rev-parse --abbrev-ref origin/HEAD | cut -c8-)"
     git pull
     git checkout "$current_branch"
 }
 
 # checkout main then clean tracking branches for remote
 grp () {
-    git checkout main 
+    # dynamically find default branch
+    git checkout "$(git rev-parse --abbrev-ref origin/HEAD | cut -c8-)"
     git remote prune origin
     git branch -vv | grep -E "gone]" | awk '{print $1}' | xargs git branch -D
 }
