@@ -5,22 +5,34 @@ export LC_ALL=en_US.UTF-8
 PATH="$PATH:/Users/ich/.local/bin"
 # ------------------------------------- Git related ---------------------------------
 
-# pull main then checkout back 
+# checkout main, pull then checkout back to working branch
 gpm () {
-    local current_branch
-    current_branch=$(git rev-parse --abbrev-ref HEAD)
-    echo "Current branch: $current_branch"
+    local working_branch
+    working_branch=$(git rev-parse --abbrev-ref HEAD)
+    echo "current branch: $working_branch"
     
     # dynamically find default branch
-    git checkout "$(git rev-parse --abbrev-ref origin/HEAD | cut -c8-)"
+    local default_branch
+    default_branch=$(git rev-parse --abbrev-ref origin/HEAD | cut -c8-)
+    if [ "$working_branch" != "$default_branch" ] 
+    then 
+        git checkout $default_branch
+    fi
     git pull
-    git checkout "$current_branch"
+    # checkout out back to working branch
+    if [ "$working_branch" != "$default_branch" ] 
+    then 
+        git checkout "$working_branch"
+    fi
 }
 
-# checkout main then clean tracking branches for remote
+# checkout main then prune tracking branches for remote
 grp () {
-    # dynamically find default branch
-    git checkout "$(git rev-parse --abbrev-ref origin/HEAD | cut -c8-)"
+    if [ "$(git rev-parse --abbrev-ref HEAD)" != "$(git rev-parse --abbrev-ref origin/HEAD | sed 's/origin\///')" ]
+    then
+        echo "current branch $(git rev-parse --abbrev-ref HEAD), default branch $(git rev-parse --abbrev-ref origin/HEAD | sed 's/origin\///')"
+        git checkout "$(git rev-parse --abbrev-ref origin/HEAD | sed 's/origin\///')"
+    fi
     git remote prune origin
     git branch -vv | grep -E "gone]" | awk '{print $1}' | xargs git branch -D
 }
