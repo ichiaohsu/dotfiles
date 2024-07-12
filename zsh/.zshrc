@@ -37,6 +37,17 @@ grp () {
     git branch -vv | grep -E "gone]" | awk '{print $1}' | xargs git branch -D
 }
 
+function gcabmsg () {
+    # find ticket prefix
+    ticket_prefix=$(git rev-parse --abbrev-ref HEAD | grep -o -E 'dat-[0-9]+' | tr '[a-z]' '[A-Z]')
+    echo "ticket: $ticket_prefix"
+
+    # commit message with prefix
+    commit_message="${@:1}"
+    git commit -am "$ticket_prefix: $commit_message"
+    # git commit -am "$ticket_prefix: ${@:2}"
+}
+
 # ------------------------------------- Node.js -------------------------------------
 # Node.js versions management with n
 export N_PREFIX=~/.local
