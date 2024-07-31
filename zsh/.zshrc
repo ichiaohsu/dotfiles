@@ -6,18 +6,18 @@ PATH="$PATH:/Users/ich/.local/bin"
 # ------------------------------------- Git related ---------------------------------
 
 # checkout main, pull then checkout back to working branch
-gpm () {
-    local working_branch
+function gpm () {
+    local working_branch default_branch
     working_branch=$(git rev-parse --abbrev-ref HEAD)
     echo "current branch: $working_branch"
-    
+
     # dynamically find default branch
-    local default_branch
     default_branch=$(git rev-parse --abbrev-ref origin/HEAD | cut -c8-)
     if [ "$working_branch" != "$default_branch" ] 
     then 
         git checkout $default_branch
     fi
+
     git pull
     # checkout out back to working branch
     if [ "$working_branch" != "$default_branch" ] 
@@ -26,9 +26,11 @@ gpm () {
     fi
 }
 
+
 # checkout main then prune tracking branches for remote
-grp () {
+function grp () {
     if [ "$(git rev-parse --abbrev-ref HEAD)" != "$(git rev-parse --abbrev-ref origin/HEAD | sed 's/origin\///')" ]
+    # if ["$(git rev-parse --abbrev-ref HEAD)" != "$(git rev-parse --abbrev-ref origin/HEAD | cut -c8-)"]
     then
         echo "current branch $(git rev-parse --abbrev-ref HEAD), default branch $(git rev-parse --abbrev-ref origin/HEAD | sed 's/origin\///')"
         git checkout "$(git rev-parse --abbrev-ref origin/HEAD | sed 's/origin\///')"
@@ -38,14 +40,22 @@ grp () {
 }
 
 function gcabmsg () {
+    local ticket_prefix commit_message
     # find ticket prefix
-    ticket_prefix=$(git rev-parse --abbrev-ref HEAD | grep -o -E 'dat-[0-9]+' | tr '[a-z]' '[A-Z]')
+    ticket_prefix=$(git rev-parse --abbrev-ref HEAD | grep -o -E 'dat-[0-9]+|uac-[0-9]+' | tr '[a-z]' '[A-Z]')
     echo "ticket: $ticket_prefix"
 
     # commit message with prefix
     commit_message="${@:1}"
     git commit -am "$ticket_prefix: $commit_message"
     # git commit -am "$ticket_prefix: ${@:2}"
+}
+
+function fzgb() {
+  local branches branch
+  branches=$(git --no-pager branch -vv) &&
+  branch=$(echo "$branches" | fzf +m) &&
+  git checkout $(echo "$branch" | awk '{print $1}' | sed "s/.* //")
 }
 
 # ------------------------------------- Node.js -------------------------------------
