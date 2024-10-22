@@ -42,7 +42,7 @@ function grp () {
 function gcabmsg () {
     local ticket_prefix commit_message
     # find ticket prefix
-    ticket_prefix=$(git rev-parse --abbrev-ref HEAD | grep -o -E 'dat-[0-9]+|uac-[0-9]+' | tr '[a-z]' '[A-Z]')
+    ticket_prefix=$(git rev-parse --abbrev-ref HEAD | grep -io -E 'dat-[0-9]+|uac-[0-9]+' | tr '[a-z]' '[A-Z]')
     echo "ticket: $ticket_prefix"
 
     # commit message with prefix
